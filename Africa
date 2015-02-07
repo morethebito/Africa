@@ -1,0 +1,734 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Game
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int hp = 100, roomNumX = 0, roomNumY = 0;
+            bool move = true, alive = true, encounter = false,                                                  //FLAGS
+            firstEncounter = true, keyFlag = false, dickHead = false;                           
+            bool itemKey = false;                                                                               //ITEMS
+            string user;     
+            Console.WriteLine("Africa! The Text Adventure.");                                                   //TITLE
+            Console.WriteLine("Press any key to start!");
+            System.Console.ReadKey(true);
+            while (alive == true)                                                                               //ALIVE
+            {
+                firstEncounter = true;
+                Console.WriteLine("Where would you like to go? (north, south, east, west, or viewmap)");        //MOVING
+                user = Convert.ToString(Console.ReadLine());
+                if ((move == true) && (user != "viewmap"))                                                                             
+                { 
+                    if (user == "north")                                                                        //NORTH
+                    {
+                        roomNumY = (roomNumY + 1);
+                        move = false;           
+                    }
+                    if (user == "south")                                                                        //SOUTH
+                    {
+                        roomNumY = (roomNumY - 1);
+                        move = false;                      
+                    }
+                    if (user == "east")                                                                         //EAST
+                    {
+                        roomNumX = (roomNumX + 1);
+                        move = false;                      
+                    }
+                    if (user == "west")                                                                         //WEST
+                    {
+                        roomNumX = (roomNumX - 1);
+                        move = false;                        
+                    }        
+                }
+                else if (user == "viewmap")
+                {
+                    Console.WriteLine("   _ _ _ _ _ _ _ _ _ _ _ ");
+                    Console.WriteLine(" 5|O|_|_|_|O|_|O|_|_|_|_|");
+                    Console.WriteLine(" 4|_|_|_|_|_|_|_|_|_|O|_|");
+                    Console.WriteLine(" 3|_|_|_|_|_|_|_|_|_|_|_|");
+                    Console.WriteLine(" 2|_|_|O|_|_|O|_|_|_|_|_|");
+                    Console.WriteLine(" 1|_|_|_|_|_|O|_|_|_|O|_|");
+                    Console.WriteLine(" 0|_|_|O|_|O|S|_|O|_|_|_|");
+                    Console.WriteLine("-1|_|_|_|_|_|_|_|_|_|_|_|");
+                    Console.WriteLine("-2|_|_|_|_|_|O|_|O|_|_|O|");
+                    Console.WriteLine("-3|_|_|O|_|_|O|_|_|_|_|_|");
+                    Console.WriteLine("-4|_|_|_|_|_|_|_|O|_|O|_|");
+                    Console.WriteLine("-5|_|_|_|_|_|_|_|_|_|_|_|");
+                    Console.WriteLine("  -5-4-3-2-1 0 1 2 3 4 5 ");
+                    Console.WriteLine("S = Start, O = encounter");
+                    Console.WriteLine("Your current position is ({0},{1})", roomNumX, roomNumY);
+                }
+                encounter = true;
+                while ((roomNumX == -5) && (roomNumY == 5) && (encounter == true))                             //ROOM (-5, 5) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("--You have entered the town of Lokoja--");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM (-5, 5) END
+
+                while ((roomNumX == -1) && (roomNumY == 5) && (encounter == true))                              //ROOM (-1, 5) START
+                { 
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("22");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM (-1, 5) END
+
+                while ((roomNumX == 1) && (roomNumY == 5) && (encounter == true))                               //ROOM ( 1, 5) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("22");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM ( 1, 5) END
+
+                while ((roomNumX == 4) && (roomNumY == 4) && (encounter == true))                               //ROOM ( 4, 4) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("22");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM ( 4, 4) END
+
+                while ((roomNumX == -3) && (roomNumY == 2) && (encounter == true))                              //ROOM (-3, 2) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("22");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM (-3, 2) END
+
+                while ((roomNumX == 0) && (roomNumY == 2) && (encounter == true))                               //ROOM ( 0, 2) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("--You have entered the town of Oshogbo--");
+                        Console.WriteLine("You see nothing but a dead bird.");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("You speak out loud.  You are not sure why you did this.");
+                    }
+                    if (user == "leave")                                                                        //LEAVE
+                    {
+                        encounter = false;
+                    }
+
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("The bird explodes in to pieces.");
+                        Console.WriteLine("You made quite a mess, but you notice something odd on the ground.");
+                        keyFlag = true;
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        if (keyFlag == true)
+                        {
+                            Console.WriteLine("You notice a key in the blood remains of the bird!");
+                            Console.WriteLine("Do you want to take the key? (yes or no)");
+                            user = Convert.ToString(Console.ReadLine());
+                            if (user == "yes")
+                            {
+                                itemKey = true;
+                                Console.WriteLine("A key has been added to your inventory.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("There doesn't seem to be anything else here.");
+                        }
+                    }
+                }                                                                                               //ROOM ( 0, 2) END
+
+                while ((roomNumX == 0) && (roomNumY == 1) && (encounter == true))                               //ROOM ( 0, 1) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("--You have entered the town of Gombe--");
+                        Console.WriteLine("You see a large African man staring angrily in your direction.");
+                        Console.WriteLine("He is wearing a fake dollar sign chain, and is wielding an AK47.");
+                        firstEncounter = false;
+                    }                    
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("The man grumbles unintelligibly.");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }                    
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("The man shoots you with his AK47.");
+                        alive = false;
+                        encounter = false;
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM ( 0, 1) END
+
+                while ((roomNumX == 4) && (roomNumY == 1) && (encounter == true))                              	//ROOM ( 4, 1) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM ( 4, 1) END
+
+                while ((roomNumX == -3) && (roomNumY == 0) && (encounter == true))                          	//ROOM (-3, 0) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }                    
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }                    
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM (-3, 0) END
+
+                while ((roomNumX == -1) && (roomNumY == 0) && (encounter == true))                        	    //ROOM (-1, 0) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("22");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");  
+                    }
+                }                                                                                               //ROOM (-1, 0) END
+
+                while ((roomNumX == 2) && (roomNumY == 0) && (encounter == true))                          	    //ROOM ( 2, 0) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("--You have entered the town of Umuahia--");
+                        Console.WriteLine("You see a run-down building with a locked door.");
+                        Console.WriteLine("A young boy is playing in the streets.");
+                        firstEncounter = false;
+                    }                    
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("The young boy screams 'DON'T TAKE MY BALL'");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }                    
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("The boy falls to the ground.");
+                        Console.WriteLine("You feel great shame.");
+                        dickHead = true;
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("Which item do you want to use?");
+                        user = Convert.ToString(Console.ReadLine());
+                        if ((user == "key") && (itemKey == true))
+                        {
+                            Console.WriteLine("You open the door and enter.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nothing seemed to happen.");
+                        }
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM 2 0 END
+
+                while ((roomNumX == 0) && (roomNumY == -2) && (encounter == true))                              //ROOM 0-2 START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM 0-2 END
+
+                while ((roomNumX == 2) && (roomNumY == -2) && (encounter == true))                              //ROOM 2-2 START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM ( 2,-2) END
+
+                while ((roomNumX == 5) && (roomNumY == -2) && (encounter == true))                              //ROOM ( 5,-2) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM ( 5,-2) END
+
+                while ((roomNumX == -3) && (roomNumY == -3) && (encounter == true))                             //ROOM (-3,-3) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM (-3,-3) END
+
+                while ((roomNumX == 0) && (roomNumY == -3) && (encounter == true))                              //ROOM ( 0,-3) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM ( 0,-3) END
+
+                while ((roomNumX == 2) && (roomNumY == -4) && (encounter == true))                              //ROOM ( 2,-4) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }                                                                                           
+                }                                                                                               //ROOM ( 2,-4) END
+
+                while ((roomNumX == 4) && (roomNumY == -4) && (encounter == true))                              //ROOM ( 4,-4) START
+                {
+                    if (firstEncounter == true)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        firstEncounter = false;
+                    }
+                    Console.WriteLine("What do you want to do? (talk, hit, explore, useitem, or leave)");
+                    user = Convert.ToString(Console.ReadLine());
+                    if (user == "talk")                                                                         //TALK
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "leave")
+                    {
+                        encounter = false;
+                    }
+                    if (user == "hit")                                                                          //HIT
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+                    if (user == "useitem")                                                                      //USEITEM
+                    {
+                        Console.WriteLine("");
+                    }
+                    if (user == "explore")                                                                      //EXPLORE
+                    {
+                        Console.WriteLine("There doesn't seem to be anything else here.");
+                    }
+                }                                                                                               //ROOM ( 4,-4) END
+
+                if (roomNumY == 6)                                                                              //ROOM LOOPER
+                {
+                    roomNumY = -5;
+                }
+                if (roomNumY == -6)
+                {
+                    roomNumY = 5;
+                }
+                if (roomNumX == -6)
+                {
+                    roomNumX = 5;
+                }
+                if (roomNumX == 6)
+                {
+                    roomNumX = -5;
+                }             
+                move = true;
+
+            }
+            if (alive == false)
+            {
+                Console.WriteLine("You are dead.");
+                Console.ReadKey();
+            }
+            
+
+        }
+    }
+}
